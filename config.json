@@ -1,4 +1,26 @@
 {
 	"debug": false,
-	"password": "PASSWORD-HERE"
+	"token": "xxx",
+	"password": "PASSWORD-HERE",
+	"channels": [],
+	"wsVersion": 10,
+	"apiVersion": 9,
+	"localeHeader": "en-GB",
+	"timezoneHeader": "Europe/London",
+	"superProperties": {
+		"os": "Mac OS X",
+		"browser": "Discord Client",
+		"release_channel": "stable",
+		"client_version": "0.0.328",
+		"os_version": "24.1.0",
+		"os_arch": "arm64",
+		"app_arch": "arm64",
+		"system_locale": "en-US",
+		"browser_user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) discord/0.0.328 Chrome/128.0.6613.186 Electron/32.2.2 Safari/537.36",
+		"browser_version": "32.2.2",
+		"os_sdk_version": "24",
+		"client_build_number": 351247,
+		"native_build_number": null,
+		"client_event_source": null
+	}
 }

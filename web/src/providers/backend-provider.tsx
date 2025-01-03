@@ -1,10 +1,10 @@
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from '~/components/ui/dialog';
 import { createContext, useCallback, useEffect, useRef, useState } from 'react';
+import { Dispatch, type Call } from '@shared/types';
 import { DispatchType } from '@shared/constants';
 import { Button } from '~/components/ui/button';
 import { Input } from '~/components/ui/input';
 import { LoaderCircle } from 'lucide-react';
-import { Dispatch } from '@shared/types';
 import config from '@web-config.json';
 import { sleep } from '@shared/utils';
 
@@ -14,6 +14,7 @@ type SocketStates = 'idle' | 'connecting' | 'connected' | 'ready';
 interface BackendContextProps {
 	state: SocketStates;
 	authenticated: boolean;
+	data: Call[];
 	send: (type: DispatchType, payload?: Record<PropertyKey, any>) => void;
 	on: (type: DispatchType, callback: (...args: any[]) => any) => () => void;
 	once: (type: DispatchType, callback: (...args: any[]) => any) => () => void;
@@ -24,6 +25,7 @@ interface BackendContextProps {
 
 export const BackendContext = createContext<BackendContextProps>({
 	send: () => void 0,
+	data: [],
 	state: 'idle',
 	authenticated: false,
 	on: () => () => void 0,
@@ -42,6 +44,7 @@ function BackendProvider({ children, ...props }: React.PropsWithChildren) {
 	const [authFailed, setAuthFailed] = useState(false);
 	const [authOpen, setAuthOpen] = useState(true);
 	const [password, setPassword] = useState('');
+	const [data, setData] = useState([]);
 
 	const [state, setState] = useState<SocketStates>('idle');
 	const ws = useRef<WebSocket | null>(null);
@@ -128,6 +131,7 @@ function BackendProvider({ children, ...props }: React.PropsWithChildren) {
 	const ctx = {
 		state,
 		authenticated,
+		data,
 		send,
 		on,
 		off,
@@ -187,6 +191,10 @@ function BackendProvider({ children, ...props }: React.PropsWithChildren) {
 							if (!payload.success) return;
 
 							setAuthenticated(true);
+						} break;
+
+						case DispatchType.DATA_UPDATE: {
+							setData(payload.calls);
 						} break;
 
 						default: {

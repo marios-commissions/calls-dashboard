@@ -1,7 +1,7 @@
 module.exports = {
 	apps: [
 		{
-			name: 'dashboard-backend',
+			name: 'call-dashboard-backend',
 			script: 'src/index.ts',
 			interpreter: 'bun',
 			env: {
@@ -9,7 +9,7 @@ module.exports = {
 			}
 		},
 		{
-			name: 'dashboard',
+			name: 'call-dashboard',
 			script: 'start-web.sh'
 		},
 	]

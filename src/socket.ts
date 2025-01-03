@@ -3,6 +3,7 @@ import { DispatchType } from '@shared/constants';
 import { WebSocket, WebSocketServer } from 'ws';
 import config from '@web-config.json';
 import * as Events from '~/events';
+import storage from '~/storage';
 
 
 const server = new WebSocketServer({ port: config.port });
@@ -15,8 +16,15 @@ server.on('connection', (ws: WebSocket) => {
 
 	ws.authenticated = false;
 
+	function onDataUpdate() {
+		send(ws, DispatchType.DATA_UPDATE, { calls: storage.store });
+	}
+
+	storage.on('updated', onDataUpdate);
+
 	ws.on('close', (code, reason) => {
 		logger.debug(`Client disconnected. (Code: ${code ?? 'Unknown'})`);
+		storage.off('updated', onDataUpdate);
 	});
 
 	ws.on('message', (data) => {
