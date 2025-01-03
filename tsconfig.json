@@ -1,0 +1,20 @@
+{
+	"compilerOptions": {
+		"target": "esnext",
+		"module": "esnext",
+		"moduleResolution": "node",
+		"resolveJsonModule": true,
+		"verbatimModuleSyntax": true,
+		"allowSyntheticDefaultImports": true,
+		"experimentalDecorators": true,
+		"baseUrl": "src",
+		"paths": {
+			"~/*": [
+				"*"
+			],
+			"@*": [
+				"../*"
+			]
+		}
+	}
+}

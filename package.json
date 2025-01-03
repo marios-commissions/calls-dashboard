@@ -1,0 +1,16 @@
+{
+  "name": "dashboard",
+  "module": "src/index.ts",
+  "type": "module",
+  "devDependencies": {
+    "@types/bun": "latest",
+    "@types/node": "^22.10.4",
+    "@types/ws": "^8.5.13"
+  },
+  "peerDependencies": {
+    "typescript": "^5.7.2"
+  },
+  "dependencies": {
+    "ws": "^8.18.0"
+  }
+}
