@@ -1,7 +1,6 @@
 {
 	"name": "call-dashboard",
-	"module": "src/index.ts",
-	"type": "module",
+	"main": "src/index.ts",
 	"devDependencies": {
 		"@types/bun": "latest",
 		"@types/node": "^22.10.4",
