@@ -187,6 +187,7 @@ class Client {
 				if (!coin || !user || !winRate || !nCalls || !marketCap) return;
 
 				Storage.add({
+					calledAt: Date.now(),
 					channel: channel.name ?? 'DM',
 					coin,
 					user,

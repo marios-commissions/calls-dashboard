@@ -29,6 +29,7 @@ function Home() {
 			<table className='table-auto w-full mt-5 border-spacing-2 border-separate rounded'>
 				<thead>
 					<tr>
+						<th>Called at</th>
 						<th>Channel</th>
 						<th>Call</th>
 						<th>Link</th>

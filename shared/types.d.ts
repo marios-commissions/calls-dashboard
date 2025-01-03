@@ -23,6 +23,7 @@ export interface AuthResponse {
 export interface Call {
 	coin: string;
 	user: string;
+	calledAt: number;
 	channel: string;
 	winRate: string;
 	nCalls: string;

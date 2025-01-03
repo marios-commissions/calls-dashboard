@@ -9,7 +9,10 @@ interface CallProps {
 
 function CallItem({ call }: CallProps) {
 	return <tr>
-		<td className='bg-foreground/10 px-2 rounded-md'>
+		<td className='bg-foreground/10 px-2 rounded-md text-center'>
+			{new Date(call.calledAt).toLocaleTimeString()}
+		</td>
+		<td className='bg-foreground/10 px-2 rounded-md text-center'>
 			<b>{call.channel}</b>
 		</td>
 		<td className='bg-foreground/10 px-2 rounded-md'>
